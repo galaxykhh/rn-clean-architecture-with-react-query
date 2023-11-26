@@ -2,6 +2,7 @@ import React from 'react';
 import Box from '@presentation/components/atom/Box';
 import { Post } from '@domain/post/entities/post';
 import Typography from '@presentation/components/atom/Typography';
+import PostDetails from '@presentation/components/molecules/PostDetails';
 
 type PostDetailsTemplateProps = {
     post: Post;
@@ -9,9 +10,7 @@ type PostDetailsTemplateProps = {
 
 const PostDetailsTemplate: React.FC<PostDetailsTemplateProps> = (props) => {
     return (
-        <Box>
-            <Typography>{props.post.title}</Typography>
-        </Box>
+        <PostDetails post={props.post} />
     );
 };
 
