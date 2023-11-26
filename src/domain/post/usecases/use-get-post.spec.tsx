@@ -7,12 +7,14 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
 import { useGetPostList } from './use-get-post-list';
 import PostRepositoryImpl from '@data/post/repository';
+import { useGetPost } from './use-get-post';
+import { Post } from '../entities/post';
 
-jest.mock('@react-native-community/netinfo', () => ({
-    fetch: jest.fn(async () => Promise.resolve({
-        isConnected: true,
-    })),
-}));
+// jest.mock('@react-native-community/netinfo', () => ({
+//     fetch: jest.fn(async () => Promise.resolve({
+//         isConnected: true,
+//     })),
+// }));
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -39,20 +41,14 @@ const postLocalDatasource: PostLocalDatasource = new PostLocalDatasourceImpl();
 const postRepository = new PostRepositoryImpl(postRemoteDatasource, postLocalDatasource);
 
 
-describe('useGetPostList', () => {
+describe('useGetPost', () => {
     it('works properly', async () => {
         // Arrange & Act
-        const { result, waitFor } = renderHook(() => useGetPostList(postRepository), { wrapper });
+        const { result, waitFor } = renderHook(() => useGetPost(postRepository, 1), { wrapper });
 
         await waitFor(() => result.current.isSuccess);
 
         // Assert
-        expect(Array.isArray(result.current.data)).toBe(true);
-        result.current.data?.forEach(post => {
-            expect(typeof post.userId).toBe('number');
-            expect(typeof post.id).toBe('number');
-            expect(typeof post.title).toBe('string');
-            expect(typeof post.body).toBe('string');
-        });
+        expect(result.current.data).toBeInstanceOf(Post);
     });
 });

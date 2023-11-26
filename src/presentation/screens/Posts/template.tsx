@@ -1,17 +1,25 @@
-import React from 'react';
-import Box from '@presentation/components/atom/Box';
+import React, { useCallback } from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { Post } from '@domain/post/entities/post';
-import Typography from '@presentation/components/atom/Typography';
+import PostSummaryList from '@presentation/components/organisms/PostSummaryList';
+import { MainStackNavigationProps } from '@presentation/navigations/MainNavigation';
 
 type PostsTemplateProps = {
     posts: Post[];
 }
 
 const PostsTemplate: React.FC<PostsTemplateProps> = (props) => {
+    const { push } = useNavigation<MainStackNavigationProps>();
+
+    const handlePressPost = useCallback((post: Post) => {
+        push('PostDetails', { postId: post.id });
+    }, []);
+
     return (
-        <Box>
-            <Typography variant='bodyS'>{props.posts.length}</Typography>
-        </Box>
+        <PostSummaryList
+            posts={props.posts}
+            onPostPress={handlePressPost}
+        />
     );
 };
 
