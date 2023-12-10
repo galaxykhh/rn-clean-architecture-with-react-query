@@ -1858,10 +1858,37 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
+"@tanstack/query-core@5.13.4":
+  version "5.13.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.13.4.tgz#50ecd3f721dfb0859528fbb8863268bee24145f0"
+  integrity sha512-8+rJucXvC/xlr4OrxHhEIob/cTlbT4fgmz1VsvB0D12FRStKaXeLORNGcOhSAynRd2NL74SV/Qq0IIb4DedLcA==
+
 "@tanstack/query-core@5.8.3":
   version "5.8.3"
   resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.8.3.tgz#7c6d62721518223e8b27f1a0b5e9bd4e3bb7ecd8"
   integrity sha512-SWFMFtcHfttLYif6pevnnMYnBvxKf3C+MHMH7bevyYfpXpTMsLB9O6nNGBdWSoPwnZRXFNyNeVZOw25Wmdasow==
+
+"@tanstack/query-persist-client-core@5.13.4":
+  version "5.13.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-persist-client-core/-/query-persist-client-core-5.13.4.tgz#ea50e64281ae4b243eecc20b03ef9542fc5c6a44"
+  integrity sha512-a2NxXmp9dYr97dMHAD33fWeWfxTggBP8QenJj77XU0qnWTVCk7OYMa8FT75JmrtwhNLqTaZZDbz07r5e/Uogug==
+  dependencies:
+    "@tanstack/query-core" "5.13.4"
+
+"@tanstack/query-sync-storage-persister@^5.13.4":
+  version "5.13.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-sync-storage-persister/-/query-sync-storage-persister-5.13.4.tgz#04d53f770007b550cce06b5683f9efb3b0491cce"
+  integrity sha512-igLuTzvBXxuLl1u88D3Wzi5wFvFHTMOaU7V3JPpxs+P7gUo31SMG8WApl92wLSSrvqtGCYewOAYwiHoqlvSicg==
+  dependencies:
+    "@tanstack/query-core" "5.13.4"
+    "@tanstack/query-persist-client-core" "5.13.4"
+
+"@tanstack/react-query-persist-client@^5.13.4":
+  version "5.13.4"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query-persist-client/-/react-query-persist-client-5.13.4.tgz#2be6c3c7c459af28c87a50453cc1d1f40c275478"
+  integrity sha512-EAYMaQuc87MIXKLtUjw4Nc/CF2v7n5+dKs6mjoWe3DTa1/nFkOfUaXAwik8mvv2g92riQNskGsfeWKqdvuNejQ==
+  dependencies:
+    "@tanstack/query-persist-client-core" "5.13.4"
 
 "@tanstack/react-query@^5.8.4":
   version "5.8.4"
@@ -5673,6 +5700,11 @@ react-is@^17.0.1:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
+
+react-native-mmkv@^2.11.0:
+  version "2.11.0"
+  resolved "https://registry.yarnpkg.com/react-native-mmkv/-/react-native-mmkv-2.11.0.tgz#51b9985f6a5c09fe9c16d8c1861cc2901856ace1"
+  integrity sha512-28PdUHjZJmAw3q+8zJDAAdohnZMpDC7WgRUJxACOMkcmJeqS3u5cKS/lSq2bhf1CvaeIiHYHUWiyatUjMRCDQQ==
 
 react-native-safe-area-context@^4.7.4:
   version "4.7.4"
