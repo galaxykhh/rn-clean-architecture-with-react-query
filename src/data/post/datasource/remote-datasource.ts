@@ -11,12 +11,13 @@ export abstract class PostRemoteDatasource {
 
 
 export class PostRemoteDatasourceImpl implements PostRemoteDatasource {
+    private readonly path = '/posts'; 
     constructor(private client: AxiosInstance) {}
 
     // Get post list
     public async getList(): Promise<PostDto[]> {
         try {
-            const { data } = await this.client.get<PostDtoResponse[]>('/posts');
+            const { data } = await this.client.get<PostDtoResponse[]>(this.path);
             const posts = data.map(d => new PostDto(d));
     
             return posts;
@@ -29,7 +30,7 @@ export class PostRemoteDatasourceImpl implements PostRemoteDatasource {
     // Get singel post item
     public async get(id: number): Promise<PostDto> {
         try {
-            const { data } = await this.client.get<PostDtoResponse>(`/posts/${id}`);
+            const { data } = await this.client.get<PostDtoResponse>(`${this.path}/${id}`);
             const post = new PostDto(data);
     
             return post;

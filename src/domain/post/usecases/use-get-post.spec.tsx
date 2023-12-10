@@ -1,18 +1,11 @@
-import { jest, describe, it, expect } from '@jest/globals';
+import { describe, it, expect } from '@jest/globals';
 import axios from 'axios';
-import NetInfo from '@react-native-community/netinfo';
 import { renderHook } from '@testing-library/react-hooks';
 import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasource/remote-datasource';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
 import PostRepositoryImpl from '@data/post/repository';
 import { useGetPost } from './use-get-post';
-
-jest.mock('@react-native-community/netinfo', () => ({
-    fetch: jest.fn(async () => Promise.resolve({
-        isConnected: true,
-    })),
-}));
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -35,7 +28,7 @@ const client = axios.create({
 });
 
 const postRemoteDatasource: PostRemoteDatasource = new PostRemoteDatasourceImpl(client);
-const postRepository = new PostRepositoryImpl(postRemoteDatasource, NetInfo);
+const postRepository = new PostRepositoryImpl(postRemoteDatasource);
 
 
 describe('useGetPost', () => {

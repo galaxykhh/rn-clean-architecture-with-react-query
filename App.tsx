@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useColorScheme } from 'react-native';
+import { ThemeProvider } from '@shopify/restyle';
+import { PersistQueryClientProvider } from '@tanstack/react-query-persist-client';
+import { onlineManager } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
-import { QueryClientProvider } from '@tanstack/react-query';
+import NetInfo from '@react-native-community/netinfo';
+import { reactQueryPersister } from '@core/utils/react-query-persister';
 import MyAppName from './src/MyAppName';
 import baseQueryClient from './src/core/network/query-client';
 import { theme as lightTheme, darkTheme } from './src/core/styles/theme';
-import { ThemeProvider } from '@shopify/restyle';
 
 const App: React.FC = () => {
   const isDarkMode = useColorScheme() === 'dark';
@@ -22,13 +25,21 @@ const App: React.FC = () => {
       },
   };
 
+  useEffect(() => {
+    return NetInfo.addEventListener(state => {
+        onlineManager.setOnline(state.isConnected ?? false);
+    });
+}, []);
+
   return (
     <ThemeProvider theme={theme}>
-      <QueryClientProvider client={baseQueryClient}>
+      <PersistQueryClientProvider
+        client={baseQueryClient}
+        persistOptions={{ persister: reactQueryPersister }}>
           <NavigationContainer theme={navigationTheme}>
               <MyAppName />
           </NavigationContainer>
-      </QueryClientProvider>
+      </PersistQueryClientProvider>
     </ThemeProvider>
   );
 }

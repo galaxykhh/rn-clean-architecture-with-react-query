@@ -1,14 +1,10 @@
 import { Post } from "@domain/post/entities/post";
-import NetInfo  from "@react-native-community/netinfo";
 import PostRepository from "@domain/post/repository";
-
-import { PostDto } from "../dtos/post";
 import { PostRemoteDatasource } from "../datasource/remote-datasource";
 
 export default class PostRepositoryImpl implements PostRepository {
     constructor(
         private remoteDatasource: PostRemoteDatasource,
-        private netInfo: typeof NetInfo,
     ) {}
 
     // Get post list
