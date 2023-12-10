@@ -1,5 +1,5 @@
 import React from 'react'
-import container from 'container';
+import container from '../../../../container';
 import { PostDetailsScreenProps } from '@presentation/navigations/MainNavigation';
 import { useGetPost } from '@domain/post/usecases/use-get-post';
 import LoadingView from '@presentation/components/molecules/LoadingView';

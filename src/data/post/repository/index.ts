@@ -1,6 +1,6 @@
 import { Post } from "@domain/post/entities/post";
 import PostRepository from "@domain/post/repository";
-import { PostRemoteDatasource } from "../datasource/remote-datasource";
+import { PostRemoteDatasource } from "../datasources/remote-datasource";
 
 export default class PostRepositoryImpl implements PostRepository {
     constructor(

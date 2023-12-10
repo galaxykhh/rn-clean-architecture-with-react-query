@@ -35,7 +35,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={theme}>
       <PersistQueryClientProvider
         client={baseQueryClient}
-        persistOptions={{ persister: reactQueryPersister }}>
+        persistOptions={{ persister: reactQueryPersister, maxAge: Infinity }}>
           <NavigationContainer theme={navigationTheme}>
               <MyAppName />
           </NavigationContainer>

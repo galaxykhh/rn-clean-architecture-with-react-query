@@ -2,7 +2,7 @@
 import baseAxios from '@core/network/axios';
 import PostRepository from '@domain/post/repository';
 import PostRepositoryImpl from '@data/post/repository';
-import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasource/remote-datasource';
+import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasources/remote-datasource';
 
 // TODO: use di tool (like tsyringe, inversify) if necessary
 

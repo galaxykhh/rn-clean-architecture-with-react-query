@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { describe, it, expect } from '@jest/globals';
 import axios from 'axios';
 import { renderHook } from '@testing-library/react-hooks';
-import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasource/remote-datasource';
+import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasources/remote-datasource';
 import PostRepositoryImpl from '@data/post/repository';
 import { useGetPostList } from './use-get-post-list';
 

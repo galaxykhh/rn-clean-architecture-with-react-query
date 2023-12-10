@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import container from 'container';
+import container from '../../../../container';
 import { useGetPostList } from '@domain/post/usecases/use-get-post-list';
 import Typography from '@presentation/components/atom/Typography';
 import { Post } from '@domain/post/entities/post';
