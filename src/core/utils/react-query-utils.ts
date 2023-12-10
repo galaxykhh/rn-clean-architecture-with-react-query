@@ -6,7 +6,6 @@ export default class ReactQueryUtils {
         domain: AppDomain,
         format?: Format,
         unique?: any,
-        meta?: any,
     ) {
         const queryKey: any[] = [domain];
 
@@ -16,10 +15,6 @@ export default class ReactQueryUtils {
 
         if (unique) {
             queryKey.push(unique);
-        }
-
-        if (meta) {
-            queryKey.push(meta);
         }
 
         return queryKey;

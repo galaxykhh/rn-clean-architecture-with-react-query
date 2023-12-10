@@ -28,7 +28,6 @@ describe('PostDto', () => {
         const entity = dto.toEntity();
 
         // Assert
-        expect(entity).toBeInstanceOf(Post);
         expect(entity.userId).toBe(dto.userId);
         expect(entity.id).toBe(dto.id);
         expect(entity.title).toBe(dto.title);

@@ -22,11 +22,11 @@ export class PostDto implements BaseDto<Post> {
     }
 
     public toEntity(): Post {
-        return new Post({
+        return {
             userId: this.userId,
             id: this.id,
             title: this.title,
             body: this.body,
-        });
+        };
     }
 }

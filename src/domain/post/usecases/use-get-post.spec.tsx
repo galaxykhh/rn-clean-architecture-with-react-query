@@ -2,13 +2,11 @@ import { jest, describe, it, expect } from '@jest/globals';
 import axios from 'axios';
 import NetInfo from '@react-native-community/netinfo';
 import { renderHook } from '@testing-library/react-hooks';
-import { PostLocalDatasource, PostLocalDatasourceImpl } from '@data/post/datasource/local-datasource';
 import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasource/remote-datasource';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { PropsWithChildren } from 'react';
 import PostRepositoryImpl from '@data/post/repository';
 import { useGetPost } from './use-get-post';
-import { Post } from '../entities/post';
 
 jest.mock('@react-native-community/netinfo', () => ({
     fetch: jest.fn(async () => Promise.resolve({
@@ -37,8 +35,7 @@ const client = axios.create({
 });
 
 const postRemoteDatasource: PostRemoteDatasource = new PostRemoteDatasourceImpl(client);
-const postLocalDatasource: PostLocalDatasource = new PostLocalDatasourceImpl();
-const postRepository = new PostRepositoryImpl(postRemoteDatasource, postLocalDatasource, NetInfo);
+const postRepository = new PostRepositoryImpl(postRemoteDatasource, NetInfo);
 
 
 describe('useGetPost', () => {
@@ -49,7 +46,6 @@ describe('useGetPost', () => {
         await waitFor(() => result.current.isSuccess);
 
         // Assert
-        expect(result.current.data).toBeInstanceOf(Post);
         expect(typeof result.current.data?.userId).toBe('number');
         expect(typeof result.current.data?.id).toBe('number');
         expect(typeof result.current.data?.title).toBe('string');

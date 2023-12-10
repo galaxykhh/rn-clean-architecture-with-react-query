@@ -4,7 +4,6 @@ import { jest, describe, it, expect } from '@jest/globals';
 import axios from 'axios';
 import NetInfo from '@react-native-community/netinfo';
 import { renderHook } from '@testing-library/react-hooks';
-import { PostLocalDatasource, PostLocalDatasourceImpl } from '@data/post/datasource/local-datasource';
 import { PostRemoteDatasource, PostRemoteDatasourceImpl } from '@data/post/datasource/remote-datasource';
 import PostRepositoryImpl from '@data/post/repository';
 import { useGetPostList } from './use-get-post-list';
@@ -37,8 +36,7 @@ const client = axios.create({
 });
 
 const postRemoteDatasource: PostRemoteDatasource = new PostRemoteDatasourceImpl(client);
-const postLocalDatasource: PostLocalDatasource = new PostLocalDatasourceImpl();
-const postRepository = new PostRepositoryImpl(postRemoteDatasource, postLocalDatasource, NetInfo);
+const postRepository = new PostRepositoryImpl(postRemoteDatasource, NetInfo);
 
 
 describe('useGetPostList', () => {
@@ -51,7 +49,6 @@ describe('useGetPostList', () => {
         // Assert
         expect(Array.isArray(result.current.data)).toBe(true);
         result.current.data?.forEach(post => {
-            expect(post).toBeInstanceOf(Post);
             expect(typeof post.userId).toBe('number');
             expect(typeof post.id).toBe('number');
             expect(typeof post.title).toBe('string');
