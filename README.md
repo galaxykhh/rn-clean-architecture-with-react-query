@@ -1,10 +1,10 @@
-This is a [**React Native Clean Architecture**](https://reactnative.dev) example with react-query.
+This is a **React Native Clean Architecture** example with react-query.
 
 ### Point
 * Based on [**`@react-native-community/cli`**](https://github.com/react-native-community/cli). 
-* Super simple DI
+* Super simple dependency injection
 * Use react-query hooks as **usecase** in domain layer
-* Fast react-query sync storage with [**`react-native-mmkv`**](https://github.com/mrousavy/react-native-mmkv)
+* Sync storage with [**`react-native-mmkv`**](https://github.com/mrousavy/react-native-mmkv)
 
 ### Packages
 * react-navigation
